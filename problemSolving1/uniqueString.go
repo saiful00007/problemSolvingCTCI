@@ -4,7 +4,9 @@ import "fmt"
 
 func main() {
 	anyWord := "saiful"
+	anyWord1 := "arafat mama"
 	fmt.Println(isUnique(anyWord))
+	fmt.Println(isUnique(anyWord1))
 }
 
 func isUnique(str string) bool {
@@ -31,5 +33,5 @@ func isUnique(str string) bool {
 // 		}
 // 		charArray[char] = true
 // 	}
-// 	return false
+// 	return true
 // }
