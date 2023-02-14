@@ -1,3 +1,9 @@
+// Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation
+// is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
+// EXAMPLE
+// Input: Tac t Coa
+// Output: True (permutations : "tac o cat" , "atc o eta" , etc. )
+
 //here i created a function which takes a string as input and return a boolian value. ..
 // First of all i create a map for holding string characters which key type is rune and value is integer...
 // then i run a for loop for string input in map...
