@@ -40,24 +40,6 @@ func (l LinkedList) Display() {
 	fmt.Println()
 }
 
-//remove duplicate values by receiving node
-// func (node *Node) RemoveDups() {
-// 	if node == nil {
-// 		return
-// 	}
-// 	isVisited := make(map[int]bool)
-// 	isVisited[node.Data] = true
-// 	curr := node
-// 	for curr.Next != nil {
-// 		if isVisited[curr.Next.Data] {
-// 			curr.Next = curr.Next.Next
-// 		} else {
-// 			isVisited[curr.Next.Data] = true
-// 			curr = curr.Next
-// 		}
-// 	}
-// }
-
 //remove dups by recieving linked list
 func (l *LinkedList) RemoveDups() {
 	if l.Head == nil {
