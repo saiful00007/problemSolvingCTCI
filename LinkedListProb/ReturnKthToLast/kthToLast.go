@@ -1,6 +1,6 @@
 // Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
 // iterate the list with 2 variables..one is used for finding the kth position of the list
-// then
+// then 2nd pointer is for return the nth value
 package main
 
 import "fmt"
@@ -37,12 +37,12 @@ func (l *LinkedList) KthToLast(k int) *Node {
 		}
 		curr = curr.Next
 	}
-	nthList := l.Head
+	nthNode := l.Head
 	for curr != nil {
-		nthList = nthList.Next
+		nthNode = nthNode.Next
 		curr = curr.Next
 	}
-	return nthList
+	return nthNode
 }
 
 func (l LinkedList) Display() {

@@ -1,3 +1,5 @@
+//Palindrome: Implement a function to check if a linked list is a palindrome.
+
 package main
 
 import "fmt"
@@ -37,6 +39,46 @@ func (l *LinkedList) Display() {
 
 func (l *LinkedList) PalindromeList() bool {
 
+	//find the middle node of the list
+	slow := l.Head
+	fast := l.Head
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+
+	//reverse the second half of the list
+	curr := slow
+	var prev *Node
+	prev = nil
+	for curr != nil {
+		temp := curr.Next
+		curr.Next = prev
+		prev = curr
+		curr = temp
+	}
+
+	//compare the first half of the list with the second half of the list
+	left, right := l.Head, prev
+	for right != nil {
+		if left.Data != right.Data {
+			return false
+		}
+		left = left.Next
+		right = right.Next
+	}
+
+	//restore the original list
+	curr = prev
+	prev = nil
+	for curr != nil {
+		temp := curr.Next
+		curr.Next = prev
+		prev = curr
+		curr = temp
+	}
+	l.Tail.Next = prev
+	return true
 }
 
 func main() {
@@ -44,7 +86,9 @@ func main() {
 	newList.PushBack(10)
 	newList.PushBack(20)
 	newList.PushBack(30)
-	newList.PushBack(40)
-	newList.PushBack(50)
+	newList.PushBack(20)
+	newList.PushBack(10)
 	newList.Display()
+	result := newList.PalindromeList()
+	fmt.Println(result)
 }
