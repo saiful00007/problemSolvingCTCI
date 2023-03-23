@@ -20,7 +20,7 @@ func NewThreeStacks(capacity int) *ThreeStacks {
 		arrayStack: make([]int, 3*capacity),
 		top1:       -1,
 		top2:       capacity - 1,
-		top3:       capacity * 2,
+		top3:       capacity*2 - 1,
 		capacity:   capacity,
 	}
 }
@@ -29,22 +29,22 @@ func NewThreeStacks(capacity int) *ThreeStacks {
 func (ts *ThreeStacks) Push(stkNumber int, value int) {
 	switch stkNumber {
 	case 1:
-		if ts.top1+1 > ts.top2 {
-			fmt.Println("stack overflow")
+		if ts.top1+1 >= ts.capacity {
+			fmt.Println("stack1 overflow")
 			return
 		}
 		ts.top1++
 		ts.arrayStack[ts.top1] = value
 	case 2:
-		if ts.top2+1 > ts.top3 {
-			fmt.Println("stack overflow")
+		if ts.top2+1 >= ts.capacity*2 {
+			fmt.Println("stack2 overflow")
 			return
 		}
 		ts.top2++
 		ts.arrayStack[ts.top2] = value
 	case 3:
 		if ts.top3+1 >= ts.capacity*3 {
-			fmt.Println("Stack Overflow")
+			fmt.Println("Stack3 Overflow")
 			return
 		}
 		ts.top3++
@@ -60,7 +60,7 @@ func (ts *ThreeStacks) Pop(stkNum int) int {
 	case 1:
 		//check if the stack is empty
 		if ts.top1 == -1 {
-			fmt.Println("stack underflow")
+			fmt.Println("stack1 underflow")
 			return -1
 		}
 		value := ts.arrayStack[ts.top1]
@@ -69,7 +69,7 @@ func (ts *ThreeStacks) Pop(stkNum int) int {
 	case 2:
 		//check if the stack is empty
 		if ts.top2 == ts.capacity-1 {
-			fmt.Println("stack underflow")
+			fmt.Println("stack2 underflow")
 			return -1
 		}
 		value := ts.arrayStack[ts.top2]
@@ -78,7 +78,7 @@ func (ts *ThreeStacks) Pop(stkNum int) int {
 	case 3:
 		//check if the stack is empty
 		if ts.top3 == ts.capacity*2 {
-			fmt.Println("stack underflow")
+			fmt.Println("stack3 underflow")
 			return -1
 		}
 		value := ts.arrayStack[ts.top3]
@@ -95,19 +95,19 @@ func (ts *ThreeStacks) Top(stkNum int) int {
 	switch stkNum {
 	case 1:
 		if ts.top1 == -1 {
-			fmt.Println("stack is empty")
+			fmt.Println("stack1 is empty")
 			return -1
 		}
 		return ts.arrayStack[ts.top1]
 	case 2:
 		if ts.top2 == ts.capacity-1 {
-			fmt.Println("stack is empty")
+			fmt.Println("stack2 is empty")
 			return -1
 		}
 		return ts.arrayStack[ts.top2]
 	case 3:
 		if ts.top3 == ts.capacity*2 {
-			fmt.Println("stack is empty")
+			fmt.Println("stack3 is empty")
 			return -1
 		}
 		return ts.arrayStack[ts.top3]
@@ -141,11 +141,18 @@ func main() {
 	newThreeStacks.Push(1, 30)
 	newThreeStacks.Push(1, 40)
 	newThreeStacks.Push(2, 10)
+	newThreeStacks.Push(1, 40)
+	newThreeStacks.Push(1, 40)
+	newThreeStacks.Push(1, 40)
+	newThreeStacks.Push(1, 40)
 	newThreeStacks.Push(2, 20)
 	newThreeStacks.Push(2, 30)
 	newThreeStacks.Push(2, 40)
 	newThreeStacks.Push(3, 10)
 	newThreeStacks.Push(3, 20)
+	newThreeStacks.Push(1, 40)
+	newThreeStacks.Push(1, 40)
+	newThreeStacks.Push(1, 40)
 	newThreeStacks.Push(3, 30)
 	newThreeStacks.Push(3, 40)
 
